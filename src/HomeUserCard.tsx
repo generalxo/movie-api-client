@@ -1,6 +1,11 @@
 //libraries
 import styled from 'styled-components';
 
+interface UserCardProps {
+    firstName: string;
+    lastName: string;
+    id: number;
+}
 
 const ProfileCardContainer = styled.div`
     display: flex;
@@ -26,12 +31,13 @@ const ProfileCardContainer = styled.div`
     };
 `;
 
-function App(props: any) {
+
+function HomeUserCard(props: UserCardProps) {
     return (
-        <ProfileCardContainer key={props.Id}>
+        <ProfileCardContainer key={props.id}>
             <h2>{props.firstName} {props.lastName}</h2>
         </ProfileCardContainer>
     );
-}
+};
 
-export default App;
+export default HomeUserCard;

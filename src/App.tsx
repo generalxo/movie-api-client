@@ -4,8 +4,10 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Local imports
-import HomePageList from './HomePageList';
+//import HomePageList from './HomePageList';
+import HomeUserCardList from './HomeUserCardList';
 import UserCard from './UserCard';
+import Navbar from './Navbar';
 
 
 const MainContainer = styled.div`
@@ -13,6 +15,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 `;
 
 const Container = styled.div`
@@ -27,18 +30,21 @@ function App() {
 
   return (
     <>
-      <Router>
-        <MainContainer>
-          <Container>
-            <HomePageList />
-          </Container>
-        </MainContainer>
-        <Switch>
-          <Route path="/user/:id">
-            <UserCard />
-          </Route>
-        </Switch>
-      </Router>
+      <MainContainer>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Route path="/user/:id">
+              <UserCard />
+            </Route>
+            <Route path="/">
+              <Container>
+                <HomeUserCardList />
+              </Container>
+            </Route>
+          </Switch>
+        </Router>
+      </MainContainer >
     </>
   )
 }

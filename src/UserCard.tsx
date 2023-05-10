@@ -1,3 +1,4 @@
+import { useRouteMatch, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const UserCardContainer = styled.div`
@@ -44,10 +45,14 @@ const LikedGenresContainer = styled.div`
     }
 `;
 
+
+
 function UserCard(props: any) {
     return (
+
         <>
             <UserCardContainer>
+
                 <UserNameBanner>
                     <h2>Jon Doe{props.fistName} {props.LastName}</h2>
                 </UserNameBanner>
