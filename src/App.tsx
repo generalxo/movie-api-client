@@ -4,10 +4,9 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Local imports
-//import HomePageList from './HomePageList';
 import HomeUserCardList from './HomeUserCardList';
-import UserCard from './UserCard';
 import Navbar from './Navbar';
+import UserPage from './user-page';
 
 
 const MainContainer = styled.div`
@@ -27,7 +26,6 @@ const Container = styled.div`
 `;
 
 function App() {
-
   return (
     <>
       <MainContainer>
@@ -35,7 +33,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route path="/user/:id">
-              <UserCard />
+              <UserPage />
             </Route>
             <Route path="/">
               <Container>

@@ -1,7 +1,7 @@
 //Libraries
 import * as React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 //Local imports
 import HomeUserCard from './HomeUserCard';
@@ -12,7 +12,7 @@ interface UserCardListProps {
     id: number;
 };
 
-function HomeUserCardList() {
+function HomeUserCardList() { //Topics??
 
     const [data, setData] = React.useState({ results: [] });
 
