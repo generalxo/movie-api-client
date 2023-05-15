@@ -1,32 +1,33 @@
 //libraries
 import * as React from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
+//local imports
+import MovieCard from './movie-card';
 
 //Interfaces
 interface URLParams {
     id: string;
 };
 
-interface UserLikedGenreProps {
-    id: number;
-    tmdbId: number;
-    title: string;
-    description: string;
+interface MovieCardListProps {
+    link: number;
 };
 
-function UserLikedGenre() {
+function MovieCardList() {
+
     let match = useParams<URLParams>();
-    let getLikedGenreInfoApiUrl: string = `http://localhost:5092/getlikedgenre/${match.id}`;
+    let getMoviesByUserApuUrl: string = `http://localhost:5092/getmoviesbyuser/${match.id}`;
 
     const [data, setData] = React.useState({ results: [] });
 
     React.useEffect(() => {
         const fetchData = async () => {
             try {
-                const result = await axios(`${getLikedGenreInfoApiUrl}`);
+                const result = await axios(`${getMoviesByUserApuUrl}`);
                 setData({ results: result.data });
-                //console.log(result.data)
+                console.log(result.data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             };
@@ -36,13 +37,11 @@ function UserLikedGenre() {
 
     return (
         <>
-            {data.results.map((props: UserLikedGenreProps, index: number) => (
-                <h4 key={index}>
-                    {props.title}
-                </h4>
+            {data.results.map((props: MovieCardListProps) => (
+                <MovieCard link={props.link} />
             ))}
         </>
     );
 };
 
-export default UserLikedGenre;
+export default MovieCardList;

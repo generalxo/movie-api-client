@@ -12,7 +12,7 @@ interface UserCardListProps {
     id: number;
 };
 
-function HomeUserCardList() { //Topics??
+function HomeUserCardList() {
 
     const [data, setData] = React.useState({ results: [] });
 
