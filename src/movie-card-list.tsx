@@ -13,6 +13,7 @@ interface URLParams {
 
 interface MovieCardListProps {
     link: number;
+    rating: number;
 };
 
 function MovieCardList() {
@@ -27,7 +28,7 @@ function MovieCardList() {
             try {
                 const result = await axios(`${getMoviesByUserApuUrl}`);
                 setData({ results: result.data });
-                console.log(result.data)
+                //console.log(result.data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             };
@@ -37,8 +38,8 @@ function MovieCardList() {
 
     return (
         <>
-            {data.results.map((props: MovieCardListProps) => (
-                <MovieCard link={props.link} />
+            {data.results.map((props: MovieCardListProps, index: number) => (
+                <MovieCard link={props.link} rating={props.rating} key={index} />
             ))}
         </>
     );

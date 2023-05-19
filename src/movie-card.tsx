@@ -6,6 +6,7 @@ import axios from "axios";
 //interfaces
 interface MovieCardProps {
     link: number;
+    rating: number;
 };
 
 interface MovieCardData {
@@ -17,10 +18,19 @@ const MovieCardContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     margin-top: 3rem;
-    background: red;
-    height: 100%;
+    width: 50rem;
+    height: 20rem;
+    border-radius: 16px;
+    box-shadow: 0px 0px 13px 0px rgba(192, 217, 255, 0.75);
+
+    transition: box-shadow 0.15s ease-in-out, transform 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0px 0px 13px 0px rgba(192, 217, 255, 1);
+        transform: scale(1.05);
+    }
 `;
 
 const TextContainer = styled.div`
@@ -28,13 +38,20 @@ const TextContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    background: blue;
-    width: 65%;
+    width: 66%;
+    height: 100%;
+
+    h1, p {
+        margin-top: .5rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        text-align: center;
+    }
 `;
 
 const MoviePoster = styled.img`
-    width: 35%;
-    height: auto;
+    width: auto;
+    height: 100%;
     object-fit: cover;
     object-position: top;
 `;
@@ -55,7 +72,7 @@ function MovieCard(props: MovieCardProps) {
             try {
                 const result = await axios(`${getMovieInfoApiUrl}`);
                 setData({ results: result.data });
-                console.log(result.data)
+                //console.log(result.data)
             } catch (error) {
                 console.error('Error fetching data:', error);
             };
@@ -72,6 +89,7 @@ function MovieCard(props: MovieCardProps) {
             <TextContainer>
                 <h1>{data.results.original_title}</h1>
                 <p>{data.results.overview}</p>
+                <h2>User Rating {props.rating}</h2>
             </TextContainer>
         </MovieCardContainer>
     );
