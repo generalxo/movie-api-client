@@ -58,8 +58,6 @@ const MoviePoster = styled.img`
 
 function MovieCard(props: MovieCardProps) {
     //props will give us the movie link to call the TMDB API
-    //Create a function that will call the TMDB API and return the movie data
-    //How do we handle movie ratings fom our api
     //https://api.themoviedb.org/3/movie/{id}
 
     let movieId: number = props.link;
