@@ -30,10 +30,6 @@ interface GenreFormProps {
     description: string;
 };
 
-/* function handleChange(event: any) {
-    console.log(event.target.value)
-} */
-
 
 function GenreForm() {
     let match = useParams<URLParams>();

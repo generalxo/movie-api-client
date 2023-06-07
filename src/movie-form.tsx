@@ -7,8 +7,6 @@ interface URLParams {
     id: string;
 };
 
-
-
 const MovieFormContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -29,9 +27,7 @@ const MovieFormContainer = styled.div`
         appearance: textfield;
     }
 `;
-const refreshPage = () => {
-    window.location.reload();
-}
+
 function MovieForm() {
     let match = useParams<URLParams>();
     //console.log(match.id)
